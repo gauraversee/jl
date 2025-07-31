@@ -1,0 +1,333 @@
+
+
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Queen Sneha 💖</title>
+  <style>
+    :root {
+      --bg-color: #fff0f6;
+      --main-color: #ff66b2;
+      --text-color: #333;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
+      cursor: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') 16 16, auto;
+    }
+
+    header {
+      text-align: center;
+      font-size: 2em;
+      padding: 20px;
+      background: #ff99cc;
+      color: white;
+      font-weight: bold;
+    }
+
+    .section {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s;
+      padding: 30px;
+    }
+
+    .section.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .para {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.1em;
+    }
+
+    .poem {
+      margin-top: 20px;
+      font-style: italic;
+      background: #ffe6f0;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .slider {
+      text-align: center;
+      position: relative;
+    }
+
+    .slider img {
+      display: none;
+      max-width: 90%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .slider img.active {
+      display: block;
+    }
+
+    .why-love ul {
+      list-style: none;
+      padding-left: 20px;
+    }
+
+    .why-love li::before {
+      content: "💖 ";
+    }
+
+    button {
+      padding: 12px 24px;
+      border: none;
+      background-color: var(--main-color);
+      color: white;
+      font-size: 1em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #e60073;
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .heart {
+      position: absolute;
+      color: pink;
+      animation: fall 5s linear infinite;
+      font-size: 20px;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+
+    @keyframes burst {
+      from {
+        transform: scale(1);
+        opacity: 1;
+      }
+      to {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        font-size: 1.5em;
+        padding: 15px;
+      }
+
+      .para {
+        padding: 10px;
+      }
+    }
+
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-color);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .typing {
+      font-size: 1.5em;
+      border-right: 2px solid;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div id="typeText" class="typing"></div>
+  </div>
+
+  <header style="display:none;">For My Queen Sneha 💖</header>
+
+  <section class="section">
+    <div class="para">
+      <h2>From the Heart 💌</h2>
+      <p>Dear Sneha,</p>
+      <p>Every moment with you feels magical. Your smile, your laughter, your love — it makes my world beautiful. This website is just a small way to show how much you mean to me. I hope you feel the love in every scroll, every word, every image.</p>
+      <div class="poem">
+        Roses are red,<br>
+        Violets are blue,<br>
+        No one in this world,<br>
+        Is as special as you.<br><br>
+        Your voice is my favorite melody,<br>
+        Your eyes my shining light,<br>
+        With you beside me forever,<br>
+        Everything feels right.
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 30px;">
+      <button onclick="nextSection()">Next →</button>
+    </div>
+  </section>
+
+  
+
+  <section class="section">
+    <div class="why-love">
+      <h2>Why I Love You 💘</h2>
+      <ul>
+        <li>Your smile brightens my darkest days.</li>
+        <li>You understand me like no one else.</li>
+        <li>Every conversation with you feels like a dream.</li>
+        <li>Your laugh is the best sound in the world.</li>
+        <li>You care deeply and love unconditionally.</li>
+        <li>You support me in everything I do.</li>
+        <li>We create magic together.</li>
+        <li>Your hugs feel like home.</li>
+        <li>You make ordinary moments special.</li>
+        <li>You are my forever.</li>
+      </ul>
+    </div>
+    <div style="text-align: center; margin-top: 30px;">
+      <button onclick="triggerConfetti()">Celebrate 🎉</button>
+    </div>
+  </section>
+
+  <!-- Hearts container -->
+  <div class="hearts" id="heart-container"></div>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_f1a8f3db38.mp3?filename=romantic-piano-116199.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Scripts -->
+  <script>
+    // Preloader Typing Animation
+    const messages = [
+      "I love you Sneha ❤️",
+      "Main tumse pyaar karta hoon Sneha 💕",
+      "मन्नै तन्नै बहुत घणा प्यार सै Sneha 🫶",
+      "ਮੈਂ ਤੈਨੂੰ ਪਿਆਰ ਕਰਦਾ ਹਾਂ Sneha 💘",
+      "हम रउरा से बहुत प्यार करीला Sneha 🌹"
+    ];
+    let msgIndex = 0;
+    const typeText = document.getElementById("typeText");
+
+    function showNextMessage() {
+      typeText.classList.remove("typing");
+      void typeText.offsetWidth;
+      typeText.innerText = messages[msgIndex];
+      typeText.classList.add("typing");
+      msgIndex++;
+      if (msgIndex < messages.length) {
+        setTimeout(showNextMessage, 3500);
+      } else {
+        setTimeout(() => {
+          document.getElementById("preloader").style.display = "none";
+          document.querySelector("header").style.display = "block";
+          document.querySelector(".section").classList.add("active");
+        }, 4000);
+      }
+    }
+    window.addEventListener("load", () => {
+      showNextMessage();
+    });
+
+    // Confetti (on final section show)
+    function triggerConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement("div");
+        confetti.innerText = "🎉";
+        confetti.style.position = "fixed";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.top = Math.random() * 100 + "vh";
+        confetti.style.fontSize = Math.random() * 20 + 10 + "px";
+        confetti.style.animation = "burst 1s ease-out forwards";
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 1000);
+      }
+    }
+
+    // Section Navigation
+    let currentSection = 0;
+    const sections = document.querySelectorAll(".section");
+
+    function nextSection() {
+      burstHearts(() => {
+        if (currentSection < sections.length - 1) {
+          sections[currentSection].classList.remove("active");
+          currentSection++;
+          sections[currentSection].classList.add("active");
+        }
+      });
+    }
+
+    function burstHearts(callback) {
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerText = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = Math.random() * 100 + "vh";
+        heart.style.fontSize = "24px";
+        heart.style.animation = "burst 1s ease-out forwards";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1000);
+      }
+      setTimeout(callback, 1000);
+    }
+
+    // Falling Hearts
+    const heartContainer = document.getElementById("heart-container");
+    for (let i = 0; i < 40; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDelay = Math.random() * 5 + "s";
+      heartContainer.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
